@@ -96,13 +96,14 @@ func main() {
 
 // function for handling the dialing with ziti
 func dialFunc(ctx context.Context, network, address string) (net.Conn, error) {
+	// Get Ziti Service Name
 	service := serviceName
-	configFile, err := config.NewFromFile(configFilePath)
-
 	if service == "" {
 		logrus.WithError(err).Error("Service Name not provided")
 		os.Exit(1)
 	}
+	// Load ziti identity configuration
+	configFile, err := config.NewFromFile(configFilePath)
 	if err != nil {
 		logrus.WithError(err).Error("Loading Ziti Identity Config File")
 		os.Exit(1)
