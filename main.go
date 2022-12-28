@@ -99,7 +99,7 @@ func dialFunc(ctx context.Context, network, address string) (net.Conn, error) {
 	// Get Ziti Service Name
 	service := serviceName
 	if service == "" {
-		logrus.WithError(err).Error("Service Name not provided")
+		logrus.Error("Service Name not provided")
 		os.Exit(1)
 	}
 	// Load ziti identity configuration
