@@ -99,8 +99,12 @@ func dialFunc(ctx context.Context, network, address string) (net.Conn, error) {
 	service := serviceName
 	configFile, err := config.NewFromFile(configFilePath)
 
+	if service == "" {
+		logrus.WithError(err).Error("Service Name not provided")
+		os.Exit(1)
+	}
 	if err != nil {
-		logrus.WithError(err).Error("Error loading config file")
+		logrus.WithError(err).Error("Loading Ziti Identity Config File")
 		os.Exit(1)
 	}
 
