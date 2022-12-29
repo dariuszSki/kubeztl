@@ -7,8 +7,10 @@ in [this repo](https://github.com/openziti-test-kitchen/kubectl). The idea is to
 
 To compile kubeztl:
 1. clone this repo
-1. go mod init kubeztl
-1. go mod tidy
 1. mkdir build
 1. go build -o build
- 
+
+If you want to pull latest packages, then add these steps before building:
+1. rm go.*
+1. go mod init kubeztl
+1. go mod tidy
